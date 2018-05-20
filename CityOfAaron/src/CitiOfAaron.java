@@ -6,6 +6,7 @@
 */
 package citiofaaron;
 
+import byui.cit260.curiousWorkmanship.model.Location;
 import byui.cit260.curiousWorkmanship.model.Player;
 
 /**
@@ -19,11 +20,20 @@ public class CitiOfAaron {
      */
     public static void main(String[] args) {
         Player playerOne = new Player();
+        Location locationOne = new Location();
         
         playerOne.setName("Fred Flintstone");
         playerOne.setTime(7.00);
         
         System.out.println(playerOne.toString());
+        
+        locationOne.setDescription("Idaho");
+        locationOne.setSymbol("ID");
+        
+        System.out.println(playerOne.toString());
+        
+        
+        
     }
     
 }
