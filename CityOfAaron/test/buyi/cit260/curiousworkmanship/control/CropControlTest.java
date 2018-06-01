@@ -24,14 +24,94 @@ public class CropControlTest {
     @Test
     public void testSellLand() {
         System.out.println("sellLand");
-        int landPrice = 25;
+        
+        // --- Test case 1 ---
+        System.out.println("\tTest case 1");
+        CropData theCrops = new CropData();
+        theCrops.setWheatInStore(100);
+        theCrops.setAcresOwned(500);
+        
+        // define the input variables
         int acresToSell = 50;
-        CropData cropData = null;
-        int expResult = 0;
-        int result = CropControl.sellLand(landPrice, acresToSell, cropData);
+        int landPrice = 25;
+        
+        int expResult = 450; // define the expected output variable
+        
+        // call the method
+        int result = CropControl.sellLand(landPrice, acresToSell, theCrops);
+        
+        // test to see if the result returnet equals the expected result
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
+ 
+        // --- Test case 2 ---
+        System.out.println("\tTest case 2");
+        theCrops.setWheatInStore(100);
+        theCrops.setAcresOwned(500);
+        
+        // define the input variables
+        acresToSell = -13;
+        landPrice = 35;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = CropControl.sellLand(landPrice, acresToSell, theCrops);
+        
+        // test to see if the result returnet equals the expected result
+        assertEquals(expResult, result);
+        
+        // --- Test case 3 ---
+        System.out.println("\tTest case 3");
+        theCrops.setWheatInStore(100);
+        theCrops.setAcresOwned(500);
+        
+        // define the input variables
+        acresToSell = 600;
+        landPrice = 30;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = CropControl.sellLand(landPrice, acresToSell, theCrops);
+        
+        // test to see if the result returnet equals the expected result
+        assertEquals(expResult, result);
+        
+        // --- Test case 4 ---
+        System.out.println("\tTest case 4");
+        theCrops.setWheatInStore(100);
+        theCrops.setAcresOwned(400);
+        
+        // define the input variables
+        acresToSell = 400;
+        landPrice = 30;
+        
+        expResult = 0; // define the expected output variable
+        
+        // call the method
+        result = CropControl.sellLand(landPrice, acresToSell, theCrops);
+        
+        // test to see if the result returnet equals the expected result
+        assertEquals(expResult, result);    
+        
+        // --- Test case 5 ---
+        System.out.println("\tTest case 5");
+        theCrops.setWheatInStore(100);
+        theCrops.setAcresOwned(200);
+        
+        // define the input variables
+        acresToSell = 0;
+        landPrice = 33;
+        
+        expResult = 200; // define the expected output variable
+        
+        // call the method
+        result = CropControl.sellLand(landPrice, acresToSell, theCrops);
+        
+        // test to see if the result returnet equals the expected result
+        assertEquals(expResult, result); 
+        
     }
     
 }
