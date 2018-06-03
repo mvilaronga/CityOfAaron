@@ -33,10 +33,10 @@ public class PlantCropsTest {
         
         // define the input variables
         int acresToPlant = 200;
-        int expResult = 100;
+        int expResult = 400;
         
         // call the method
-        int result = PlantCrops.plantCrops(acresToPlant, theCrops);
+        int result = CropControl.plantCrops(acresToPlant, theCrops);
         
         // test to see if the result returnet equals the expected result
         assertEquals(expResult, result);
@@ -51,7 +51,7 @@ public class PlantCropsTest {
         expResult = -1;
         
         // call the method
-        result = PlantCrops.plantCrops(acresToPlant, theCrops);
+        result = CropControl.plantCrops(acresToPlant, theCrops);
         
         // test to see if the result returnet equals the expected result
         assertEquals(expResult, result);
@@ -68,7 +68,7 @@ public class PlantCropsTest {
         expResult = -1;
         
         // call the method
-        result = PlantCrops.plantCrops(acresToPlant, theCrops);
+        result = CropControl.plantCrops(acresToPlant, theCrops);
         
         // test to see if the result returnet equals the expected result
         assertEquals(expResult, result);
@@ -84,22 +84,22 @@ public class PlantCropsTest {
         expResult = -1;
         
         // call the method
-        result = PlantCrops.plantCrops(acresToPlant, theCrops);
+        result = CropControl.plantCrops(acresToPlant, theCrops);
         
         // test to see if the result returnet equals the expected result
         assertEquals(expResult, result);
         
         // --- Test case 5 ---
         System.out.println("\tTest case 5");
-        theCrops.setWheatInStore(500);
-        theCrops.setAcresOwned(200);
+        theCrops.setWheatInStore(101);
+        theCrops.setAcresOwned(201);
         
         // define the input variables
         acresToPlant = 200;
-        expResult = 100;
+        expResult = 1;
         
         // call the method
-        result = PlantCrops.plantCrops(acresToPlant, theCrops);
+        result = CropControl.plantCrops(acresToPlant, theCrops);
         
         // test to see if the result returnet equals the expected result
         assertEquals(expResult, result);
@@ -107,15 +107,15 @@ public class PlantCropsTest {
 
                 // --- Test case 6 ---
         System.out.println("\tTest case 6");
-        theCrops.setWheatInStore(0);
+        theCrops.setWheatInStore(101);
         theCrops.setAcresOwned(200);
         
         // define the input variables
-        acresToPlant = 0;
-        expResult = 0;
+        acresToPlant = 200;
+        expResult = 1;
         
         // call the method
-        result = PlantCrops.plantCrops(acresToPlant, theCrops);
+        result = CropControl.plantCrops(acresToPlant, theCrops);
         
         // test to see if the result returnet equals the expected result
         assertEquals(expResult, result);
