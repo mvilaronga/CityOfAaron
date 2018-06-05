@@ -8,6 +8,8 @@ package buyi.cit260.curiousworkmanship.control;
 
 import byui.cit260.curiousWorkmanship.model.CropData;
 
+import java.util.Random;
+
 /**
  *
  * @author MARCUS VILARONGA
@@ -20,6 +22,27 @@ public class CropControl {
     // Returns: the number of acres owned after the sale
     // Pre-conditions: acres to sell must be positive
     // and <= acresOwned
+    
+    // constants
+     private static final int LAND_BASE = 17;
+     private static final int LAND_RANGE = 10;
+
+    // random number generator
+    private static Random random = new Random();
+
+    
+    // calcLandCost() method
+    // Purpose: Calculate a random land cost between 17 and 26 bushels/acre
+    // Parameters: none
+    // Returns: the land cost
+    public static int calcLandCost()
+    {
+        int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;  
+        return landPrice;            
+    }
+
+
+
 
     public static int sellLand(int landPrice, int acresToSell, CropData cropData)
     {
