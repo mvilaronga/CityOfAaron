@@ -1,2 +1,0 @@
-# CityOfAaron
-Team Assingments - CityOfAaron
