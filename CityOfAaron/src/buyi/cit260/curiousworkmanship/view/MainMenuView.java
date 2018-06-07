@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The MainMenuView class - part of the view layer
+ * Object of the class manage the main menu
+ * Author: Garcia, Nefi
+ * Date las modified: June 2018
  */
 package buyi.cit260.curiousworkmanship.view;
 
