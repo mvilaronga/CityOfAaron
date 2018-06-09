@@ -91,5 +91,53 @@ public class MainMenuView {
 
     }
     
+// The doAction method
+// Purpose: performs the selected action
+// Parameters: none
+// Returns: none
+// ===================================
+public void doAction(int option)
+{
+    switch(option)
+
+{
+// if the option is 1, call startNewGame( )
+case 1: // create and start a new game
+startNewGame();
+break;
+
+// if the option is 2, call startExistingGame( )
+case 2: // get and start a saved game
+startSavedGame();
+break;
+
+// if the option is 3, call displayHelpMenu( )
+case 3: // get help menu
+displayHelpMenuView();
+break;
+
+// if the option is 4, call displaySaveGame( )
+case 4: // save game
+displaySaveGameView();
+break;
+
+// if the option is 5, display a goodbye message
+case 5:
+System.out.println("Thanks for playing ... goodbye.");
+}
+}
+
+// The startNewGame method
+// Purpose: creates game object and starts the game
+// Parameters: none
+// Returns: none
+// ===================================
+public void startNewGame()
+{
+System.out.println("\nStart new game option selected.");
+}    
+
+
+    
     }
 }
