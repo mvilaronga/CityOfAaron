@@ -8,17 +8,36 @@ package citiofaaron;
 
 import byui.cit260.curiousWorkmanship.model.Location;
 import byui.cit260.curiousWorkmanship.model.Player;
+import View.*;
 
-/**
- *
- * @author MARCUS VILARONGA
- */
+
 public class CitiOfAaron {
+ 
+    // variable for keeping a reference to the Game object
+    private static Game theGame = null;
 
-    /**
-     * @param args the command line arguments
-     */
+    public static Game getTheGame() {
+        return theGame;
+    }
+
+    public static void setTheGame(Game theGame) {
+        CitiOfAaron.theGame = theGame;
+    }
+
+    
+     
+
+
+       
+    // main function - entry point for the program
+    // runs the main menu
     public static void main(String[] args) {
+        
+        
+        MainMenuView mmv = new MainMenuView();
+        mmv.displayMenuView();       
+        
+            
         Player playerOne = new Player();
         Location locationOne = new Location();
         

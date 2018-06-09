@@ -20,6 +20,14 @@ public class MainMenuView {
         private int max;
         
            
+        // The MainMenuView constructor
+        // Purpose: Initialize the menu data
+        // Parameters: none
+        // Returns: none
+        // ===================================
+        public MainMenuView()
+        {
+
         theMenu = "\n" +
             "****************************\n" +
             "  CITY OF AARON: Main Game Menu  " +
@@ -30,7 +38,7 @@ public class MainMenuView {
             " 4 - Save game\n" +
             " 5 - Quit\n";
         max = 5;
-
+        }
 
 
     // The displayMenuView method
@@ -56,8 +64,8 @@ public class MainMenuView {
         doAction(menuOption);
 
         // Determine and display the next view
-        } while (menuOption != max);
-
+    } while (menuOption != max);
+    }
         
     // The getMenuOption method
     // Purpose: gets the user's input
@@ -91,53 +99,70 @@ public class MainMenuView {
 
     }
     
-// The doAction method
-// Purpose: performs the selected action
-// Parameters: none
-// Returns: none
-// ===================================
-public void doAction(int option)
-{
-    switch(option)
+        // The doAction method
+        // Purpose: performs the selected action
+        // Parameters: none
+        // Returns: none
+        // ===================================
+        public void doAction(int option)
+        {
+            switch(option)
+            {
+            case 1: // create and start a new game
+                startNewGame();
+                break;
+            case 2: // get and start a saved game
+                startSavedGame();
+                break;
+            case 3: // get help menu
+                displayHelpMenuView();
+                break;
+            case 4: // save game
+                displaySaveGameView();
+                break;
+            case 5:
+                System.out.println("Thanks for playing ... goodbye.");
+            }
+        }
 
-{
-// if the option is 1, call startNewGame( )
-case 1: // create and start a new game
-startNewGame();
-break;
+        // The startNewGame method
+        // Purpose: creates game object and starts the game
+        // Parameters: none
+        // Returns: none
+        // ===================================
+        public void startNewGame()
+        {
+        //Create a new Game object.
+        Game theGame = new Game;
 
-// if the option is 2, call startExistingGame( )
-case 2: // get and start a saved game
-startSavedGame();
-break;
+        // Save a reference to it in the GameProject class.
+        GameProject.setCurrentGame(theGame);
+        
+        // Display the Banner Page.
+        System.out.println(“\nWelcome to the city of Aaron.”);
+        
+        // Create a new Player object
+        Player thePlayer = new Player();
 
-// if the option is 3, call displayHelpMenu( )
-case 3: // get help menu
-displayHelpMenuView();
-break;
+        // Prompt for and get the user’s name.
+        String name;
+        System.out.println("\nPlease type in your first name: ");
+        name = keyboard.next();
 
-// if the option is 4, call displaySaveGame( )
-case 4: // save game
-displaySaveGameView();
-break;
+        // Save the user’s name in the Player object
+        thePlayer.setPlayerName(name);
 
-// if the option is 5, display a goodbye message
-case 5:
-System.out.println("Thanks for playing ... goodbye.");
-}
-}
+        // Save a reference to the player object in the Game object
+        theGame.setPlayer(thePlayer);
 
-// The startNewGame method
-// Purpose: creates game object and starts the game
-// Parameters: none
-// Returns: none
-// ===================================
-public void startNewGame()
-{
-System.out.println("\nStart new game option selected.");
-}    
+        // Display a welcome message
+        System.out.println(“\nWelcome “ + name + “ have fun.”);
+
+        // Display the Game menu
+
+        }    
 
 
     
     }
-}
+
