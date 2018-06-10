@@ -15,21 +15,24 @@ import java.util.Objects;
  */
 public class Player implements Serializable{
     
-    // class instance variable
+    // class instnce variables
     private String name;
-    private double bastTime;
-    private ArrayList<Game> games = new ArrayList<>();
-    public boolean toString;
+    private Game[] games = new Game[5];
+    
+    
+    public Player() {
+    }
 
-   
+    public Game[] getGames() {
+        return games;
+    }
 
-     public ArrayList<Game> getGames() {
-         return games;
-     } 
-     
-     public void setGames(ArrayList<Game> games) {
-         this.games = games;
-     }
+    public void setGames(Game[] games) {
+        this.games = games;
+    }
+    
+    
+    
 
     public String getName() {
         return name;
@@ -39,29 +42,19 @@ public class Player implements Serializable{
         this.name = name;
     }
 
-    public double getBastTime() {
-        return bastTime;
-    }
-
-    public void setBastTime(double bastTime) {
-        this.bastTime = bastTime;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.bastTime) ^ (Double.doubleToLongBits(this.bastTime) >>> 32));
+        hash = 89 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", bastTime=" + bastTime + '}';
+        return "Player{" + "name=" + name + '}';
     }
-    
-    
 
+        
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -74,21 +67,13 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
-        if (Double.doubleToLongBits(this.bastTime) != Double.doubleToLongBits(other.bastTime)) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        return Objects.equals(this.name, other.name);
-    }
-
-    public void setTime(double d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public double getTime() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
     
     
-            
+    
     
 }

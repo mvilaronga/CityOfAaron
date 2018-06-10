@@ -6,6 +6,7 @@
 package byui.cit260.curiousWorkmanship.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -13,13 +14,15 @@ import java.io.Serializable;
  */
 public class Game implements Serializable{
     
+    // class instance variable
     
-    // class instance variables
-    private double totalTime;
-    private int noPeople;
     private Player player;
 
-   
+    public Game() {
+    }
+    
+    
+
     public Player getPlayer() {
         return player;
     }
@@ -27,36 +30,17 @@ public class Game implements Serializable{
     public void setPlayer(Player player) {
         this.player = player;
     }
-    
-    
-
-    public double getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(double totalTime) {
-        this.totalTime = totalTime;
-    }
-
-    public int getNoPeople() {
-        return noPeople;
-    }
-
-    public void setNoPeople(int noPeople) {
-        this.noPeople = noPeople;
-    }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
-        hash = 79 * hash + this.noPeople;
+        hash = 19 * hash + Objects.hashCode(this.player);
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "totalTime=" + totalTime + ", noPeople=" + noPeople + '}';
+        return "Game{" + "player=" + player + '}';
     }
     
     
@@ -73,13 +57,11 @@ public class Game implements Serializable{
             return false;
         }
         final Game other = (Game) obj;
-        if (Double.doubleToLongBits(this.totalTime) != Double.doubleToLongBits(other.totalTime)) {
+        if (!Objects.equals(this.player, other.player)) {
             return false;
         }
-        return this.noPeople == other.noPeople;
+        return true;
     }
-    
-    
     
     
     

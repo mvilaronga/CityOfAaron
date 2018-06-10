@@ -9,8 +9,9 @@ package buyi.cit260.curiousworkmanship.view;
 
 
 import java.util.Scanner;
-import cityofaaron.cityofaaron;
-import buyi.cit260.curiousworkmanship.model.Player;
+import cityofaaron.CityOfAaron;
+import byui.cit260.curiousWorkmanship.model.Player;
+import byui.cit260.curiousWorkmanship.model.Game;
 
 public class MainMenuView {
     
@@ -133,10 +134,10 @@ public class MainMenuView {
         public void startNewGame()
         {
         //Create a new Game object.
-        Game theGame = new Game;
+        Game theGame = new Game();
 
         // Save a reference to it in the GameProject class.
-        GameProject.setCurrentGame(theGame);
+        Game.setCurrentGame(theGame);
         
         // Display the Banner Page.
         System.out.println(“\nWelcome to the city of Aaron.”);

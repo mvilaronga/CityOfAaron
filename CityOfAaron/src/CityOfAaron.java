@@ -4,15 +4,18 @@
 * Spring 2018
 *  Team members: Nefi Garcia and Marcus Vilaronga
 */
-package citiofaaron;
+package cityofaaron;
 
 import byui.cit260.curiousWorkmanship.model.Location;
 import byui.cit260.curiousWorkmanship.model.Player;
+import byui.cit260.curiousWorkmanship.model.Game;
 import View.*;
 
 
-public class CitiOfAaron {
- 
+public class CityOfAaron {
+    
+    
+
     // variable for keeping a reference to the Game object
     private static Game theGame = null;
 
@@ -21,7 +24,7 @@ public class CitiOfAaron {
     }
 
     public static void setTheGame(Game theGame) {
-        CitiOfAaron.theGame = theGame;
+        CityOfAaron.theGame = theGame;
     }
 
     
