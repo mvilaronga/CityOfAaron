@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package byui.cit260.curiousWorkmanship.model;
 
 import java.io.Serializable;
@@ -11,18 +7,21 @@ import java.util.Objects;
  *
  * @author Nefi Nuñez
  */
-public class ListItem implements Serializable {
-  
-    // class instance variable
-    private string name;
+public class ListItem implements Serializable{
+     // class instance variable
+    private String name;
     private int number;
-    private ListItem ListItem;
 
-    public string getName() {
+    public ListItem(String name, int number) {
+        this.name = name;
+        this.number = number;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public void setName(string name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -34,29 +33,13 @@ public class ListItem implements Serializable {
         this.number = number;
     }
 
-    public ListItem getListItem() {
-        return ListItem;
-    }
-
-    public void setListItem(ListItem ListItem) {
-        this.ListItem = ListItem;
-    }
-
-    public ListItem() {
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 23 * hash + Objects.hashCode(this.name);
         hash = 23 * hash + this.number;
-        hash = 23 * hash + Objects.hashCode(this.ListItem);
+        
         return hash;
-    }
-
-    @Override
-    public String toString() {
-        return "ListItem{" + "name=" + name + ", number=" + number + ", ListItem=" + ListItem + '}';
     }
 
     @Override
@@ -77,10 +60,14 @@ public class ListItem implements Serializable {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.ListItem, other.ListItem)) {
-            return false;
-        }
+        
         return true;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ListItem{" + "name=" + name + ", number=" + number + '}';
     }
     
     
