@@ -17,6 +17,18 @@ public class Game implements Serializable{
     // class instance variable
     
     private Player player;
+    private CropData cropData = null;
+
+    public CropData getCropData() {
+        return cropData;
+    }
+
+    public void setCropData(CropData cropData) {
+        this.cropData = cropData;
+    }
+
+    
+    
 
     public Game() {
     }

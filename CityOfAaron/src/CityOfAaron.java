@@ -9,7 +9,7 @@ package cityofaaron;
 import byui.cit260.curiousWorkmanship.model.Location;
 import byui.cit260.curiousWorkmanship.model.Player;
 import byui.cit260.curiousWorkmanship.model.Game;
-import View.*;
+import byui.cit260.curiousWorkmanship.View;
 
 
 public class CityOfAaron {
