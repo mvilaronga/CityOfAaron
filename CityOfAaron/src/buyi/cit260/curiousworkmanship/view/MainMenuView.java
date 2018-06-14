@@ -125,7 +125,40 @@ public class MainMenuView {
                 System.out.println("Thanks for playing ... goodbye.");
             }
         }
+        
 
+        
+        // The startSavedGame method
+        // Purpose: creates game object and starts the game
+        // Parameters: none
+        // Returns: none
+        // ===================================     
+        public void startSavedGame()
+        {
+            System.out.println("\nStart save game option selected.");
+        }
+        
+        // The displayHelpMenuView method
+        // Purpose: creates game object and starts the game
+        // Parameters: none
+        // Returns: none
+        // ===================================     
+        public void displayHelpMenuView()
+        {
+            System.out.println("\nDisplay help menu option selected.");
+        }
+
+        // The displaySaveGameView method
+        // Purpose: creates game object and starts the game
+        // Parameters: none
+        // Returns: none
+        // ===================================     
+        public void displaySaveGameView()
+        {
+            System.out.println("\nDisplay save game menu option selected.");
+        }        
+        
+        
         // The startNewGame method
         // Purpose: creates game object and starts the game
         // Parameters: none
@@ -137,10 +170,10 @@ public class MainMenuView {
         Game theGame = new Game();
 
         // Save a reference to it in the GameProject class.
-        Game.setCurrentGame(theGame);
+        CityOfAaron.setTheGame(theGame);
         
         // Display the Banner Page.
-        System.out.println(“\nWelcome to the city of Aaron.”);
+        System.out.println("\nWelcome to the city of Aaron.");
         
         // Create a new Player object
         Player thePlayer = new Player();
@@ -151,13 +184,13 @@ public class MainMenuView {
         name = keyboard.next();
 
         // Save the user’s name in the Player object
-        thePlayer.setPlayerName(name);
+        thePlayer.setName(name);
 
         // Save a reference to the player object in the Game object
         theGame.setPlayer(thePlayer);
 
         // Display a welcome message
-        System.out.println(“\nWelcome “ + name + “ have fun.”);
+        System.out.println("\nWelcome “ + name + “ have fun.");
 
         // Display the Game menu
 
