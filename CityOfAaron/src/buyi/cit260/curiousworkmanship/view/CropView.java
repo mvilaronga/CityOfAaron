@@ -20,17 +20,20 @@ public class CropView {
     private static Game theGame = CityOfAaron.getCurrentGame();
     private static CropData cropData = theGame.getCropData();
 
-// The runCropsView method()
-// Purpose: runs the Hamurabi game
-// Parameters: none
-// Returns: none
-public static void runCropsView()
-{
-// call the buyLandView( ) method
-buyLandView( );
-// add calls to the other crop view methods
-// as they are written
-}
+    // The runCropsView method()
+    // Purpose: runs the Hamurabi game
+    // Parameters: none
+    // Returns: none
+    public static void runCropsView()
+    {
+    // call the buyLandView( ) method
+    buyLandView( );
+    // add calls to the other crop view methods
+    // as they are written
+    }
+
+
+    
 
 
     
