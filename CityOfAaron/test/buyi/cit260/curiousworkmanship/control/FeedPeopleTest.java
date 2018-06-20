@@ -31,7 +31,7 @@ public class FeedPeopleTest {
         System.out.println("\tTest case 1");
         CropData thePeople = new CropData();
         thePeople.setWheatInStore(120);
-        thePeople.setBushelsOwned(80);
+        thePeople.setOfferingBushels(80);
         
         // define the input variables
         wheatReserved = 10;
@@ -46,7 +46,7 @@ public class FeedPeopleTest {
         // --- Test case 2 ---
         System.out.println("\tTest case 2");
         thePeople.setWheatInStore(500);
-        thePeople.setBushelsOwned(300);
+        thePeople.setOfferingBushels(300);
         
         // define the input variables
         wheatReserved = -25;
@@ -63,7 +63,7 @@ public class FeedPeopleTest {
         // --- Test case 3 ---
         System.out.println("\tTest case 3");
         thePeople.setWheatInStore(500);
-        thePeople.setBushelsOwned(150);
+        thePeople.setOfferingBushels(150);
         
         // define the input variables
         wheatReserved = 40;
@@ -80,7 +80,7 @@ public class FeedPeopleTest {
         // --- Test case 4 ---
         System.out.println("\tTest case 4");
         thePeople.setWheatInStore(200);
-        thePeople.setBushelsOwned(100);
+        thePeople.setOfferingBushels(100);
         
         // define the input variables
         wheatReserved = 65;
@@ -95,7 +95,7 @@ public class FeedPeopleTest {
         // --- Test case 5 ---
         System.out.println("\tTest case 5");
         thePeople.setWheatInStore(150);
-        thePeople.setBushelsOwned(100);
+        thePeople.setOfferingBushels(100);
         
         // define the input variables
         wheatReserved = 120;
