@@ -22,6 +22,10 @@ public class HelpMenuView {
          public void displayMenuView()
     {
         
+        HelpMenuView hmv = new HelpMenuView();    // create a HelpMenuView object
+        hmv.displayMenuView();
+
+        
         HelpMenuView theGame = new HelpMenuView();
          int menuOption = 0;
             do
@@ -83,22 +87,22 @@ public class HelpMenuView {
     {
                switch(option)
         {
-            case 1: // View Map
+            case 1: // View goalOfGame
                 goalOfGame();
                 break;
-            case 2: // view list
+            case 2: // view whereIsTheCity
                 whereIsTheCity();
                 break;
-            case 3: // move to new location
+            case 3: // move to map
                 howToviewTheMap();
                 break;
-            case 4: // manage crops
+            case 4: // howToMoveLocation
                 howToMoveLocation();
                 break;
-            case 5: // manage crops
-                howToDisplayStorehouse();
+            case 5: // howToMoveLocation
+                howToMoveLocation();
                 break;
-            case 6: // manage crops
+            case 6:   // the program will return to the main menu here
                 backHelpMenu();
                 break;
             case 7:
