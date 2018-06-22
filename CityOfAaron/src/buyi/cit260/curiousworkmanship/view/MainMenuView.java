@@ -1,8 +1,3 @@
-// The MainMenuView class - part of the view layer
-// Object of this class manage the main menu
-// Author: Jones, Smith, Brown team
-// Date last modified: January 2018
-//-------------------------------------------------------------
 
 package buyi.cit260.curiousworkmanship.view;
 
