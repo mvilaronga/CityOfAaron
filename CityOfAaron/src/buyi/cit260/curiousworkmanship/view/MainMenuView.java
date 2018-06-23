@@ -10,7 +10,9 @@ import byui.cit260.curiousWorkmanship.model.Player;
 import byui.cit260.curiousWorkmanship.model.Game;
 import byui.cit260.curiousWorkmanship.model.CropData;
 
-public class MainMenuView {
+
+public class MainMenuView extends MenuView
+ {
     
         Scanner keyboard = new Scanner(System.in);
         
@@ -29,16 +31,17 @@ public class MainMenuView {
         public MainMenuView()
         {
 
-        theMenu = "\n" +
-            "****************************\n" +
-            "  CITY OF AARON: Main Game Menu  " +
-            "****************************\n" +
-            " 1 - Start an new game\n" +
-            " 2 - Continue a saved game\n" +
-            " 3 - How to play\n" +
-            " 4 - Save game\n" +
-            " 5 - Quit\n";
-        max = 5;
+        super( "\n" +
+
+                              "**********************************\n" +
+                   "* CITY OF AARON: MAIN GAME MENU  *\n" +
+                   "**********************************\n" +
+                   " 1 - Start new game\n" +
+                   " 2 - Get and start a saved game\n" +
+                   " 3 - Get help on playing the game\n" +
+                   " 4 - Save game\n" +
+                   " 5 - Quit\n", 
+                5);
         }
 
 
@@ -105,7 +108,7 @@ public class MainMenuView {
         // Parameters: none
         // Returns: none
         // ===================================
-        public void doAction(int option)
+        @Override public void doAction(int option)
         {
             switch(option)
             {
