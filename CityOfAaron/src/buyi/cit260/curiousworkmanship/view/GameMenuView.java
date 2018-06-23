@@ -3,11 +3,12 @@ package buyi.cit260.curiousworkmanship.view;
 
 import java.util.Scanner;
 
+
 /**
  *
  * @author Nefi Nuñez
  */
-public class GameMenuView {
+public abstract class GameMenuView implements ViewInterface {
     
      Scanner keyboard = new Scanner(System.in);
 
@@ -22,7 +23,7 @@ public class GameMenuView {
      
      
     
-        public void displayMenuView()
+          @Override public void displayMenu()
     {
         
         GameMenuView theGame = new GameMenuView();
@@ -78,7 +79,7 @@ public class GameMenuView {
  
     
     
-    public int getMenuOption() {
+      @Override public int getMenuOption() {
     // The getMenuOption method
     int userInput;
     // begin loop
@@ -104,7 +105,7 @@ public class GameMenuView {
     
     
     
-     public void doAction(int option)
+        @Override public void doAction(int option)
     {
                switch(option)
         {
