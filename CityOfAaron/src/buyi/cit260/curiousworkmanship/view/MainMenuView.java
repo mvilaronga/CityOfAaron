@@ -28,12 +28,11 @@ public class MainMenuView extends MenuView
         // Parameters: none
         // Returns: none
         // ===================================
+        
         public MainMenuView()
         {
-
-        super( "\n" +
-
-                              "**********************************\n" +
+        super( "\n"+
+                   "**********************************\n" +
                    "* CITY OF AARON: MAIN GAME MENU  *\n" +
                    "**********************************\n" +
                    " 1 - Start new game\n" +
@@ -76,32 +75,6 @@ public class MainMenuView extends MenuView
     // Parameters: none
     // Returns: integer - the option selected
     // ===================================       
-    public int getMenuOption()
-    {
-        // declare a variable to hold user’s input
-        int userInput;
-
-        // begin loop
-        do
-        {
-
-        // get user input from the keyboard
-        userInput = keyboard.nextInt();
-
-        // if it is not a valid value, output an error message
-        if(userInput < 1 || userInput > max)
-        {
-            System.out.println("\noption must be between 1 and " + max);
-        }
-        
-        
-        // loop back to the top if input was not valid
-        } while(userInput < 1 || userInput > max);
-
-        // return the value input by the user
-        return userInput;
-
-    }
     
         // The doAction method
         // Purpose: performs the selected action
