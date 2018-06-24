@@ -5,8 +5,10 @@
  */
 package byui.cit260.curiousWorkmanship.model;
 
+import buyi.cit260.curiousworkmanship.control.CropControl;
 import java.io.Serializable;
 import java.util.Objects;
+
 /**
  *
  * @author Nefi Nuñez

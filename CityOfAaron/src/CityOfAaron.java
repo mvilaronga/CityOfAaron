@@ -6,10 +6,11 @@
 */
 package cityofaaron;
 
+import buyi.cit260.curiousworkmanship.view.MainMenuView;
 import byui.cit260.curiousWorkmanship.model.Location;
 import byui.cit260.curiousWorkmanship.model.Player;
 import byui.cit260.curiousWorkmanship.model.Game;
-import byui.cit260.curiousWorkmanship.View;
+
 
 
 public class CityOfAaron {
@@ -45,7 +46,7 @@ public class CityOfAaron {
         Location locationOne = new Location();
         
         playerOne.setName("Fred Flintstone");
-        playerOne.setTime(7.00);
+       
         
         System.out.println(playerOne.toString());
         

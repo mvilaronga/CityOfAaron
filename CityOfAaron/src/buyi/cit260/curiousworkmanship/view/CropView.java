@@ -5,8 +5,8 @@
  */
 package buyi.cit260.curiousworkmanship.view;
 
-import buyi.cit260.curiousworkmanship.model;
-import buyi.cit260.curiousworkmanship.control;
+import byui.cit260.curiousWorkmanship.model.CropData;
+import byui.cit260.curiousWorkmanship.model.Game;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 
@@ -17,7 +17,7 @@ import cityofaaron.CityOfAaron;
 public class CropView {
     
     private static Scanner keyboard = new Scanner(System.in);   
-    private static Game theGame = CityOfAaron.getCurrentGame();
+    private static Game theGame = CityOfAaron.getTheGame();
     private static CropData cropData = theGame.getCropData();
 
     // The runCropsView method()
@@ -26,15 +26,7 @@ public class CropView {
     // Returns: none
     public static void runCropsView()
     {
-    // call the buyLandView( ) method
-    buyLandView( );
-    // add calls to the other crop view methods
-    // as they are written
+
     }
 
-
-    
-
-
-    
 }
