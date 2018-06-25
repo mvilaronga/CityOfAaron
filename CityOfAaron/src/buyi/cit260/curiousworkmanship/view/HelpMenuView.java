@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author MARCUS VILARONGA
  */
-public class HelpMenuView {
+public class HelpMenuView extends MenuView  {
     
     Scanner keyboard = new Scanner(System.in);
     
@@ -19,37 +19,10 @@ public class HelpMenuView {
      private String helpMenu;
      private int max;
      
-         public void displayMenuView()
-    {
-        
-        HelpMenuView hmv = new HelpMenuView();    // create a HelpMenuView object
-        hmv.displayMenuView();
-
-        
-        HelpMenuView theGame = new HelpMenuView();
-         int menuOption = 0;
-            do
-            {
-
-            //Display the Menu
-                 System.out.println(helpMenu);
-
-            //Prompt for input
-                menuOption = getMenuOption(); 
-
-
-            //Perform actions
-
-                   doAction(menuOption);
-
-
-            //Determine next view
-            }  while (menuOption != max);     
-    }
-
+    
                    public HelpMenuView()
 {
-        helpMenu = "\n" +
+        super ("\n" +
                    "**********************************\n" +
                    "* CITY OF AARON: HELP MENU  *\n" +
                    "**********************************\n" +
@@ -60,30 +33,13 @@ public class HelpMenuView {
                    " 5 - How do I display a list of animals, provisions and\n" +
                    "tools in the city storehouse?\n" +
                    " 6 - Back to the Main Menu.\n" +
-                   " 7 - Quit\n";
+                   " 7 - Quit\n",
         
-        max = 7;
+                7);
 } 
                    
-    public int getMenuOption() {
-    // The getMenuOption method
-    int userInput;
-    // begin loop
-        do{
-            // get user input from the keyboard
-            userInput = keyboard.nextInt();
-
-            // if it is not a valid value, output an error message
-            if(userInput < 1 || userInput > max)
-            {
-                System.out.println("\noption must be between 1 and " + max);
-            } 
-            return userInput;
-            }while(userInput < 1 || userInput > max);
-        
-        }
          
-     public void doAction(int option)
+     @Override public void doAction(int option)
     {
                switch(option)
         {
