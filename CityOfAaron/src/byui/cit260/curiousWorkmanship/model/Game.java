@@ -6,11 +6,12 @@
 package byui.cit260.curiousWorkmanship.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
  *
- * @author MARCUS VILARONGA
+ * @author Marcus Vilaronga and Nefi Nuñez
  */
 public class Game implements Serializable{
     
@@ -73,6 +74,22 @@ public class Game implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public void setAnimals(ArrayList<ListItem> animals) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setTools(ArrayList<ListItem> tool) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setProvisions(ArrayList<ListItem> provision) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setMap(Map theMap) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
