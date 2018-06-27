@@ -6,8 +6,10 @@
 package byui.cit260.curiousWorkmanship.model;
 
 import buyi.cit260.curiousworkmanship.control.CropControl;
+
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  *
@@ -264,7 +266,6 @@ public static int calcLandCost()
 {
 
 int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
-
 return landPrice;
 
 }
