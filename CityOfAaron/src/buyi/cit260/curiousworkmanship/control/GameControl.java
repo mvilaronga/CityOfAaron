@@ -72,10 +72,10 @@ public class GameControl {
             
         ArrayList<ListItem> tool = new ArrayList<ListItem>();
         
-        tool.add(new ListItem("plow Beam", 12));
+        tool.add(new ListItem("plow beam", 12));
         tool.add(new ListItem("curry-comb", 3));
-        tool.add(new ListItem("digging-Fork", 7));
-        tool.add(new ListItem("garden Hammer", 4));
+        tool.add(new ListItem("digging-fork", 7));
+        tool.add(new ListItem("garden hammer", 4));
        
         theGame.setTools(tool);
         }        
@@ -132,6 +132,38 @@ public class GameControl {
         loc.setDescription(farmland + "\nOne bushel will plant two acres of wheat.");
         loc.setSymbol("***");
         theMap.setLocation(0, 2, loc);
+        
+        // define the string for a fountain location
+        String fountain = "\nIn the fountain cattle have abundant water." +
+        "\nToo fountain provide water to plantations and to cook, whash dishies" +
+        "\nand take a shower."; 
+
+        // set a fountain location with a hint
+        loc = new Location();
+        loc.setDescription(fountain + "\nOne barrel of water quench thirst two sheeps.");
+        loc.setSymbol("***");
+        theMap.setLocation(1, 3, loc);
+        
+        // define the string for a pasture location
+        String pasture = "\nIn the pasture cattle have grain to eat." +
+        "\nIt's a silent place to cattle."; 
+
+        // set a pasture location with a hint
+        loc = new Location();
+        loc.setDescription(pasture + "\nOne acre of pasture provide food to 05 sheeps.");
+        loc.setSymbol("***");
+        theMap.setLocation(3, 4, loc);
+        
+        // define the string for a forest location
+        String forest = "\nWe have a forest that is so far and is in the" +
+        "\nboundary of the valley. The forest is big and dense, but have wolfs." +
+        "\nWolfs are a threat to our cattle.";; 
+
+        // set a forest location with a hint
+        loc = new Location();
+        loc.setDescription(forest + "\nThe forest have a lot of wolfs.");
+        loc.setSymbol("***");
+        theMap.setLocation(4, 2, loc);
 
  
         theGame.setMap(theMap);
