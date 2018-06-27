@@ -12,7 +12,7 @@ import byui.cit260.curiousWorkmanship.model.*;
 
 /**
  *
- * @author MARCUS VILARONGA
+ * @author Marcus Vilaronga and Nefi Nuñez
  */
 public class GameControl {
     
@@ -104,7 +104,7 @@ public class GameControl {
 
         // create a string that will go in the Location objects
         // that contain the river
-        String river = "\nYou are on the Valley. The valley is the source" +
+        String valley = "\nYou are on the Valley. The valley is the source" +
                       "\nof life for our city. The valley marks the northen " +
                       "\nboundary of the city - it is wilderness to the West.";
 
@@ -112,15 +112,29 @@ public class GameControl {
         Location loc = new Location();
 
         // use setters in the Location class to set the description and symbol
-        loc.setDescription(river);
+        loc.setDescription(valley);
         loc.setSymbol("***");  
 
-        // set this location object in each cell of the array in column 4      
+        // set this location object in each cell of the array in column 2      
         for(int i = 0; i < MAX_ROW; i++)
         {
-                theMap.setLocation(i, 4, loc);
+                theMap.setLocation(i, 2, loc);
         }
 
+        
+        // define the string for a farm land location
+        String farmland = "\nYou are on the fertile banks of the valley." +
+        "\nIn the springthis low farmland floods and is covered with rich" +
+        "\nnew soil. Wheat is planted as far as you can see."; 
+
+        // set a farmland location with a hint
+        loc = new Location();
+        loc.setDescription(farmland + "\nOne bushel will plant two acres of wheat.");
+        loc.setSymbol("***");
+        theMap.setLocation(0, 2, loc);
+
+ 
+        theGame.setMap(theMap);
         }
     
 }
