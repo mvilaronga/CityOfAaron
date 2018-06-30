@@ -7,7 +7,7 @@ import byui.cit260.curiousWorkmanship.model.CropData;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 import byui.cit260.curiousWorkmanship.model.Player;
-import byui.cit260.curiousWorkmanship.model.Game;
+import buyi.cit260.curiousworkmanship.control.GameControl;
 import byui.cit260.curiousWorkmanship.model.CropData;
 
 
@@ -70,12 +70,6 @@ public class MainMenuView extends MenuView
     } while (menuOption != max);
     }
         
-    // The getMenuOption method
-    // Purpose: gets the user's input
-    // Parameters: none
-    // Returns: integer - the option selected
-    // ===================================       
-    
         // The doAction method
         // Purpose: performs the selected action
         // Parameters: none

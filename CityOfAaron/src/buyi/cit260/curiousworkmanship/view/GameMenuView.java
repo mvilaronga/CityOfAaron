@@ -31,26 +31,7 @@ public class GameMenuView extends MenuView {
                 5);
 } 
  
-        
-     
-    
-    
-    
-// The getMenuOption method
-    // Purpose: gets the user's input
-    // Parameters: none
-    // Returns: integer - the option selected
- 
-    
-    
-            
-    // Purpose: gets the user's input
-    // Parameters: none
-    // Returns: integer - the option selected
-        
-
-    
-    
+   
     
         @Override public void doAction(int option)
     {
@@ -73,10 +54,28 @@ public class GameMenuView extends MenuView {
         }
     }
      
-public void viewMap(){System.out.println("\n View map selected");}
-public void viewList(){System.out.println("\n View list selected");}
-public void moveToNewLocation(){System.out.println("\n Move to new location selected");}
-public void manageCrops(){System.out.println("\n Manage crops selected");}
+    public void viewMap(){System.out.println("\n View map selected");}
+
+    // The viewList() method
+    // Purpose: Creates a ViewList object and calls its
+    //    displayMenuView ( ) method       
+    // Parameters: none
+    // Returns: none
+    public void viewList(){
+    {
+        ListView lv = new ListView();
+        lv.displayMenuView();
+    } 
+}
+    public void moveToNewLocation(){System.out.println("\n Move to new location selected");}
+    public void manageCrops(){System.out.println("\n Manage crops selected");}
+
+    void displayMenuView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    
 
 
 }   

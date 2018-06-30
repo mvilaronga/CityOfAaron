@@ -16,6 +16,9 @@ import java.util.Random;
  * @author Nefi Nuñez
  */
 public class CropData {
+    
+    private static Random random = new Random();
+    
     // class instance variable
     private int year;
     private int population;
@@ -261,15 +264,15 @@ public class CropData {
 // Parameters: none
 // Returns: the land cost
 
-public static int calcLandCost()
+    public static int calcLandCost(int LAND_BASE, int LAND_RANGE)
 
-{
+    {
 
-int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
-return landPrice;
+        int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
+        return landPrice;
 
-}
-    private static Random random = new Random();
+    }
+        
     
 // The buyLandView method
 // Purpose: interface with the user input for buying land
@@ -299,6 +302,19 @@ public static void buyLandView()
     // Call the buyLand( ) method in the control layer to buy the land
     CropControl.buyLand(toBuy, price, cropData);
 }
+
+    // The runCropsView method()
+    // Purpose: runs the Hamurabi game
+    // Parameters: none
+    // Returns: none
+    public static void runCropsView()
+    {
+    // call the buyLandView( ) method
+    buyLandView( );
+
+    // add calls to the other crop view methods
+    // as they are written
+    }
 
 
 
