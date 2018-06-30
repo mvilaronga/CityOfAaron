@@ -259,62 +259,8 @@ public class CropData {
     }
     
     
-// calcLandCost() method
-// Purpose: Calculate a random land cost between 17 and 26 bushels/acre
-// Parameters: none
-// Returns: the land cost
-
-    public static int calcLandCost(int LAND_BASE, int LAND_RANGE)
-
-    {
-
-        int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
-        return landPrice;
-
-    }
-        
-    
-// The buyLandView method
-// Purpose: interface with the user input for buying land
-// Parameters: none
-// Returns: none
 
 
-// The buyLandView method
-
-// Purpose: interface with the user input for buying land
-
-// Parameters: none
-
-// Returns: none
-
-public static void buyLandView()
-
-{
-    // Get the cost of land for this round.
-    int price = CropControl.calcLandCost();
-    // Prompt the user to enter the number of acres to buy
-    System.out.format("Land is selling for %d bushels per acre.%n",price);
-    System.out.print("\nHow many acres of land do you wish to buy? ");
-    // Get the user’s input and save it.
-    int toBuy;
-    toBuy = keyboard.nextInt();
-    // Call the buyLand( ) method in the control layer to buy the land
-    CropControl.buyLand(toBuy, price, cropData);
-}
-
-    // The runCropsView method()
-    // Purpose: runs the Hamurabi game
-    // Parameters: none
-    // Returns: none
-    public static void runCropsView()
-    {
-    // call the buyLandView( ) method
-    buyLandView( );
-
-    // add calls to the other crop view methods
-    // as they are written
-    }
 
 
 

@@ -57,7 +57,7 @@ public class GameControl {
         // create the list of animals
         public static void createAnimalList() {
             
-        ArrayList<ListItem> animals = new ArrayList<ListItem>();
+        ArrayList<ListItem> animals = new ArrayList<>();
         
         animals.add(new ListItem("chickens", 12));
         animals.add(new ListItem("sheeps", 3));
@@ -70,7 +70,7 @@ public class GameControl {
         // create the list of tools
         public static void createToolList() {
             
-        ArrayList<ListItem> tool = new ArrayList<ListItem>();
+        ArrayList<ListItem> tool = new ArrayList<>();
         
         tool.add(new ListItem("plow beam", 12));
         tool.add(new ListItem("curry-comb", 3));
@@ -82,7 +82,7 @@ public class GameControl {
         //create the list of provisions
         public static void createProvisionList() {
             
-        ArrayList<ListItem> provision = new ArrayList<ListItem>();
+        ArrayList<ListItem> provision = new ArrayList<>();
         
         provision.add(new ListItem("hay", 12));
         provision.add(new ListItem("wheat", 3));
