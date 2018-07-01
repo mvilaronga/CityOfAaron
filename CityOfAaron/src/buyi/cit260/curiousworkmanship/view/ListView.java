@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author MARCUS VILARONGA
+ * @author Marcus Vilaronga and Nefi Nuñez
  */
 public class ListView extends MenuView {
 
