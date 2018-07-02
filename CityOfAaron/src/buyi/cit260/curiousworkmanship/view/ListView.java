@@ -52,13 +52,27 @@ public class ListView extends MenuView {
         }
     }
        
-       public void displayDevTeam(){System.out.println("\n View the development team");}
-       public void displayAnimalList(){System.out.println("\n View a list of animals");}
-       public void displayToolList(){System.out.println("\n View a list of tools");}
-       public void displayProvisionList(){System.out.println("\n View a list of provisions");}
+       public void displayDevTeam(){System.out.println("\n List of Developers:\n" +
+                                                       " Nefi Garcia" +
+                                                       " Marcus Vilaronga");}
+       
+       
+       public void displayAnimalList(){System.out.println("\n View a list of animals:\n" +
+                                                          " Chickens, sheeps, dogs and ducks");}
+       
+       
+       public void displayToolList(){System.out.println("\n View a list of tools:\n" +
+                                                          " plow beam, curry-comb, digging-fork\n" +
+                                                          " and garden hammer");}
+       
+       
+       public void displayProvisionList(){System.out.println("\n View a list of provisions:\n" +
+                                                          " Hay, wheat, beans and rice");}
 
     void displayMenuView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           MainMenuView mmv = new MainMenuView();
+           mmv.displayMenu();
+
     }
        
 }

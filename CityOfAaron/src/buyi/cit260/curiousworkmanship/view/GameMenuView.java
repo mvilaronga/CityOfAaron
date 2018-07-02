@@ -21,13 +21,13 @@ public class GameMenuView extends MenuView {
         {
         super( "\n"+
                     "**********************************\n" +
-                    "* CITY OF AARON: MAIN GAME MENU  *\n" +
+                    "* CITY OF AARON: GAME MENU  *\n" +
                     "**********************************\n" +
-                    " 1 - Start new game\n" +
-                    " 2 - Get and start a saved game\n" +
-                    " 3 - Get help on playing the game\n" +
-                    " 4 - Save game\n" +
-                    " 5 - Quit\n",
+                    " 1 - View the map\n" +
+                    " 2 - View/Print a list\n" +
+                    " 3 - Move to a new location\n" +
+                    " 4 - Manage the Crops\n" +
+                    " 5 - Return to the Main menu\n",
                 5);
 } 
  
@@ -50,7 +50,7 @@ public class GameMenuView extends MenuView {
                 manageCrops();
                 break;
             case 5:
-                System.out.println("Game Over.");
+                displayMenuView();
         }
     }
      
@@ -70,8 +70,10 @@ public class GameMenuView extends MenuView {
     public void moveToNewLocation(){System.out.println("\n Move to new location selected");}
     public void manageCrops(){System.out.println("\n Manage crops selected");}
 
-    void displayMenuView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void displayMenuView() {
+        GameMenuView gmv = new GameMenuView();
+        gmv.displayMenu();
+
     }
 
 
