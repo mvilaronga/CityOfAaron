@@ -7,6 +7,8 @@
 package buyi.cit260.curiousworkmanship.control;
 
 import byui.cit260.curiousWorkmanship.model.CropData;
+import buyi.cit260.curiousworkmanship.control.CropControl;
+import exceptions.CropException;
 
 import java.util.Random;
 
@@ -30,6 +32,31 @@ public class CropControl {
     // random number generator
     private static Random random = new Random();
 
+    
+     public int buyLand(Crops theCrops, int toBuy, int landCost) throws CropException
+    {
+        // test toBuy to make sure it is not a negative value
+        // if it is, return a -1
+        if(toBuy < 0)
+              throw new CropException("A negative value was input");
+
+        
+        // test wheatInStore to make sure there is enough 
+        int wheat = theCrops.getWheatInStore();
+        if(wheat < toBuy * landCost)
+            throw new CropException("There is insufficient wheat to buy this much land");
+    
+        // add the number of acres to buy to current number of acres
+        int acresOwned = theCrop.getAcres();
+        acresOwned += toBuy;
+        theCrop.setAcres(acresOwned);
+        
+        // deduct cost from wheatInStore
+        wheat = theCrop.getWheatInStore();
+        wheat -= (toBuy * landCost);
+        theCrop.setWheatInStore(wheat);
+
+    }
     
     // calcLandCost() method
     // Purpose: Calculate a random land cost between 17 and 26 bushels/acre

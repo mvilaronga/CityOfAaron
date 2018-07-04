@@ -64,7 +64,7 @@ public class GameMenuView extends MenuView {
     public void viewList(){
     {
         ListView lv = new ListView();
-        lv.displayMenuView();
+        lv.displayMenu();
     } 
 }
     public void moveToNewLocation(){System.out.println("\n Move to new location selected");}
