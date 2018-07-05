@@ -5,19 +5,18 @@
 //-------------------------------------------------------------
 
 package buyi.cit260.curiousworkmanship.control;
-
-import byui.cit260.curiousWorkmanship.model.CropData;
 import exceptions.CropException;
 import byui.cit260.curiousWorkmanship.model.CropData;
+import byui.cit260.curiousWorkmanship.model.Game;
 
 import java.util.Random;
 
 /**
  *
- * @author MARCUS VILARONGA
+ * @author Marcus Vilaronga and Nefi Nuñez
  */
 public class CropControl {
-    // The sellLand method
+     // The sellLand method
     // Purpose: To sell land
     // Parameters: the price of land, the number of acres to sell, and
     //    a reference to a CropData object
@@ -25,110 +24,187 @@ public class CropControl {
     // Pre-conditions: acres to sell must be positive
     // and <= acresOwned
     
-    // constants
-     private static final int LAND_BASE = 17;
-     private static final int LAND_RANGE = 10;
-
-    // random number generator
-    private static Random random = new Random();
-
+    // Variables
     
-     public static void buyLand(Crops theCrop, int toBuy, int landCost) throws CropException
-    {
-        // test toBuy to make sure it is not a negative value
-        // if it is, return a -1
-        if(toBuy < 0)
-              throw new CropException("A negative value was input");
+    private static Game theGame;
+    private static CropData cropData;
+      
+    // Constructors
 
+    public CropControl() {
+    }
         
-        // test wheatInStore to make sure there is enough 
-        int wheat = theCrop.getWheatInStore();
-        if(wheat < toBuy * landCost)
-            throw new CropException("There is insufficient wheat to buy this much land");
+    public static int calcLandPrice(int min, int max) {
+        
+        // Random number generator
+        Random random = new Random();
+        // Generate random number using parameters
+        int landPrice = random.nextInt(max) + min;
+        // Return result
+        return landPrice;
+    }
     
-        // add the number of acres to buy to current number of acres
-        int acresOwned = theCrop.getAcres();
-        acresOwned += toBuy;
-        theCrop.setAcres(acresOwned);
+    public static int calcLandPrice() {
+  
+        Random random = new Random(); 
+         //constants
+        int LAND_BASE = 17; 
+        int LAND_RANGE = 10; 
+        int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
         
-        // deduct cost from wheatInStore
-        wheat = theCrop.getWheatInStore();
-        wheat -= (toBuy * landCost);
-        theCrop.setWheatInStore(wheat);
+        return landPrice;
+    }
+    
+    public static int buyLand(int landPrice, int acresToBuy, CropData cropData) {
+        try {
+            
+            int totalPrice = acresToBuy * landPrice;
+                
+            // if acresToBuy < 0, ERROR
+            if (acresToBuy < 0) { 
+                throw new CropException("A negative value was input.");  
+               }
+        
+            // if wheatInStore < totalPrice, ERROR
+            if (cropData.getWheatInStore() < totalPrice) { 
+                throw new CropException("There is insufficient wheat to buy this much land."); 
+            }
+        
+            // if population <= (oldAcres + newAcres) / 10, ERROR
+            if ((cropData.getPopulation() * 10) < (cropData.getAcresOwned() + acresToBuy)) { 
+                throw new CropException("The population is not large enough to buy this much land.");  
+            }
+        
+            if (acresToBuy == 0) { return cropData.getAcresOwned(); }
+        
+            else {
+                // else, add number of acres purchased to acres owned
+                cropData.setAcresOwned(cropData.getAcresOwned() + acresToBuy);
+        
+                // subtract price from WheatInStore
+                cropData.setWheatInStore(cropData.getWheatInStore() - totalPrice);
+        
+                // return new acresOwned Value
+                return cropData.getAcresOwned();
+                //return cropData.getAcresOwned();
+            }
         }
-    
-    // calcLandCost() method
-    // Purpose: Calculate a random land cost between 17 and 26 bushels/acre
-    // Parameters: none
-    // Returns: the land cost
-    public static int calcLandCost()
-    {
-        int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;  
-        return landPrice;            
+        // There needs to be a catch here
+        catch (CropException e) {
+            System.out.println("I am sorry master, I cannot do this.");
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
-
-
-
-    public static int sellLand(int landPrice, int acresToSell, CropData cropData)
-    {
-        //if acresToSell < 0, return -1
-        if(acresToSell < 0)
-              return -1;
-
-        //if acresToSell > acresOwned, return -1
-        int owned = cropData.getAcresOwned();
-        if(acresToSell > owned)
-             return -1;
-
-        //acresOwned = acresOwned - acresToSell
-        owned -= acresToSell;
-        cropData.setAcresOwned(owned);
-
-        //wheatInStore = wheatInStore + acresToSell * landPrice
-        int wheat = cropData.getWheatInStore();
-        wheat+= (acresToSell * landPrice);
-        cropData.setWheatInStore(wheat);
-
-        //return acresOwned
-        return owned;
-
+    public static int sellLand(int landPrice, int acresToSell, CropData cropData) {
+        
+        // acresOwned Variable
+        int acresOwned = cropData.getAcresOwned();
+        
+        // if acresToSell < 0, return -1
+        if (acresToSell < 0)
+            return -1; 
+        
+        // if acresToSell > acresOwned, return -1
+        if (acresToSell > acresOwned)
+            return -1;
+        
+        // acresOwned - acresToSell
+        acresOwned -= acresToSell;
+        
+        // save the new acresOwned amount            
+        cropData.setAcresOwned(acresOwned);
+        
+        // wheatInStore = wheatInStore + (acresToSell * landPrice)
+        int wheatInStore = cropData.getWheatInStore();
+        wheatInStore += (acresToSell * landPrice);
+       
+        // save result to wheatInStore
+        cropData.setWheatInStore(wheatInStore);
+         
+        // return acresOwned
+        return cropData.getAcresOwned(); 
+    }
+    
+    public static int feedPeople(int wheatForPeople, CropData cropData){
+        
+        int wheatInStore = cropData.getWheatInStore(); 
+        
+        if (wheatForPeople < 0) {
+            return -1;
+        }
+        
+        if (wheatForPeople < wheatInStore) {
+            wheatInStore -= wheatForPeople; 
+            cropData.setWheatInStore(wheatInStore);
+            cropData.setWheatForPeople(wheatForPeople);
+            return cropData.getWheatInStore();
+        }
+        
+        if (wheatInStore < wheatForPeople) {
+            return -1;
+        }
+        
+        return 0;
+    }
+    
+    public static int plantCrops(int landToPlant, CropData cropData) {
+        
+        int acresOwned = cropData.getAcresOwned(); 
+        int wheatInStore = cropData.getWheatInStore();
+       
+    
+        if (landToPlant < 0) { 
+            return -1; 
+        }
+        
+        if (landToPlant == 0) { 
+            return wheatInStore; 
+        }
+        
+        if (landToPlant > acresOwned) { 
+            return -1; 
+        } 
+        
+        if ((landToPlant / 2) < wheatInStore) {
+            int wheatRequired = landToPlant / 2; 
+            wheatInStore -= wheatRequired;
+            cropData.setWheatInStore(wheatInStore);
+            return cropData.getWheatInStore();
+        }
+        
+        if ((landToPlant / 2) == wheatInStore) { 
+            return 0; 
+        }
+        
+        return -1;
     }
 
-        // The plantCrops method
-    // Purpose: To plant crops
-    // Parameters: the number of acres want to plant, the number of acres owned, and
-    //    the number of bushels of wheat stocked
-    // Returns: the number of wheat in store minus the number of wheat planted
-    // Pre-conditions: the number of wheat in store minus the number of acres that 
-    //    you want plant times two (You can plant 2 acres with one bushel of wheat)    
-    public static int plantCrops(int acresToPlant, CropData cropData) {
+    // getters and setters
+
+
+    public static Game getTheGame() {
+        return theGame;
+    }
+
+    public static void setTheGame(Game theGame) {
+        CropControl.theGame = theGame;
+    }
+
+    public static CropData getCropData() {
+        return cropData;
+    }
+
+    public static void setCropData(CropData cropData) {
+        CropControl.cropData = cropData;
+    }
     
-        // acresToPlant < 0, return -1
-        if(acresToPlant < 0)
-              return -1;
 
-        // acresOwned  < acresToPlant,  return -1
-        int owned = cropData.getAcresOwned();
-        if(owned < acresToPlant)
-             return -1;
-        
-        // wheatInStore < (acresToPlant / 2), -1
-        int store = cropData.getWheatInStore();
-        if(store <= (acresToPlant / 2))
-             return -1;
-        
-        // Calculate the number of bushels required to plant the crops
-        int bushelsByAcre = (int)(acresToPlant / 2);
-        store -= bushelsByAcre;
-        
-        // Updating game state
-        cropData.setWheatInStore(store);
-        cropData.setAcresPlanted(acresToPlant);
-
-        // return wheatInStore -= (acresToPlant * bushelsByAcre)
-        return store;
-        
-}
-        
+    @Override
+    public String toString() {
+        return "CropControl{" + '}';
+    }
+    
+    
 }
