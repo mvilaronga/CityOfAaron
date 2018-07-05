@@ -20,9 +20,11 @@ public class CropView {
     private static Scanner keyboard = new Scanner(System.in);   
     private static Game theGame = CityOfAaron.getTheGame();
     private static CropData cropData = theGame.getCropData();
-    
+
+public static void buyLandView( ) {
+        
     int price = CropControl.calcLandCost();
-    System.out.format("Land is selling for %d bushels per acre.%n"price);
+    System.out.format("Land is selling for %d bushels per acre.%n" + price);
     int toBuy;
     boolean paramsNotOkay;
     do
@@ -41,6 +43,7 @@ public class CropView {
              paramsNotOkay = true;
         }
         } while(paramsNotOkay);
+}
 
     // The runCropsView method()
     // Purpose: runs the Hamurabi game
