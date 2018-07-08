@@ -73,7 +73,7 @@ public class CropView {
         CropControl.sellLand(price, toSell, cropData);
     }
     
-    public static void feedPeopleView(CropData cropData) {
+    public static void feedPeopleView() throws CropException{
         
       
         int wheat = cropData.getWheatInStore();
