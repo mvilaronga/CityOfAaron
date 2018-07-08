@@ -149,36 +149,28 @@ public class CropControl {
         return 0;
     }
     
-    public static int plantCrops(int landToPlant, CropData cropData) {
+        public static int plantCrops(int acresToPlant, CropData cropData) throws CropException
+{
         
         int acresOwned = cropData.getAcresOwned(); 
         int wheatInStore = cropData.getWheatInStore();
-       
+        int bushelsByAcre = (int)(acresToPlant / 2);
     
-        if (landToPlant < 0) { 
-            return -1; 
+        if (acresToPlant < 0) { 
+            throw new CropException("A negative value was input, try ");
         }
         
-        if (landToPlant == 0) { 
-            return wheatInStore; 
-        }
-        
-        if (landToPlant > acresOwned) { 
-            return -1; 
+        if (acresToPlant > acresOwned) { 
+            throw new CropException("You own less acres than you want to plant"); 
         } 
         
-        if ((landToPlant / 2) < wheatInStore) {
-            int wheatRequired = landToPlant / 2; 
+        if ((acresToPlant / bushelsByAcre) <= wheatInStore) {
+            int wheatRequired = bushelsByAcre; 
             wheatInStore -= wheatRequired;
             cropData.setWheatInStore(wheatInStore);
-            return cropData.getWheatInStore();
+            
         }
-        
-        if ((landToPlant / 2) == wheatInStore) { 
-            return 0; 
-        }
-        
-        return -1;
+        return cropData.getWheatInStore();
     }
 
     // getters and setters

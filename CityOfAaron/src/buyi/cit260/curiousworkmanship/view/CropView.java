@@ -25,8 +25,9 @@ public class CropView {
    
     public static void runCropsView() {
         
-
         buyLandView();
+
+        
         
         
     }
@@ -81,5 +82,33 @@ public class CropView {
         int wheatForPeople = keyboard.nextInt(); 
         CropControl.feedPeople(wheatForPeople, cropData); 
         
+    }
+    
+    public static void plantCropsView() throws CropException {
+        
+        int price = CropControl.calcLandPrice();
+       
+        System.out.format("Land is selling for %d bushels per acre.%n", price);
+        
+        int acresToPlant = 0;
+        boolean paramsNotOkay; 
+        do {
+            try {
+                paramsNotOkay = false;
+                System.out.print("How many acres of land do you want to plant?");
+                acresToPlant = keyboard.nextInt();            
+                CropControl.plantCrops(acresToPlant, cropData);
+                if (acresToPlant == 0) {
+                    throw new CropException("Please select more acres");
+                }
+            }
+            catch (CropException e) {
+                System.out.println("I am sorry master, I cannot do this."); 
+                System.out.println(e.getMessage());
+                paramsNotOkay = true; 
+            }
+       
+        } while(paramsNotOkay); 
+          CropControl.plantCrops( acresToPlant, cropData);
     }
 }

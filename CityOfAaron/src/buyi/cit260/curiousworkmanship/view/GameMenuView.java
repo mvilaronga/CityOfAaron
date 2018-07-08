@@ -2,7 +2,7 @@
 package buyi.cit260.curiousworkmanship.view;
 
 import java.util.Scanner;
-
+import buyi.cit260.curiousworkmanship.view.CropView;
 
 /**
  *
