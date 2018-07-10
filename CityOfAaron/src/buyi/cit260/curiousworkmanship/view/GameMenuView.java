@@ -1,8 +1,11 @@
 
 package buyi.cit260.curiousworkmanship.view;
 
+import exceptions.CropException;
 import java.util.Scanner;
-import buyi.cit260.curiousworkmanship.view.CropView;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -46,8 +49,14 @@ public class GameMenuView extends MenuView {
             case 3: // move to new location
                 moveToNewLocation();
                 break;
-            case 4: // manage crops
-                manageCrops();
+            case 4: {
+                   try {
+                       // manage crops
+                       manageCrops();
+                   } catch (CropException ex) {
+                       Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+               }
                 break;
             case 5:
                 displayMenuView();
@@ -68,7 +77,8 @@ public class GameMenuView extends MenuView {
     } 
 }
     public void moveToNewLocation(){System.out.println("\n Move to new location selected");}
-    public void manageCrops(){System.out.println("\n Manage crops selected");}
+    public void manageCrops() throws CropException{
+        CropView.runCropsView();}
 
     public void displayMenuView() {
         GameMenuView gmv = new GameMenuView();

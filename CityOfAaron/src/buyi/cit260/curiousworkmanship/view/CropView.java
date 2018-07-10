@@ -23,9 +23,13 @@ public class CropView {
     private static CropData cropData = theGame.getCropData();
     
    
-    public static void runCropsView() {
+    public static void runCropsView() throws CropException {
         
+        plantCropsView();
         buyLandView();
+        sellLandView();
+        feedPeopleView();
+        
 
         
         
@@ -98,7 +102,7 @@ public class CropView {
                 System.out.print("How many acres of land do you want to plant?");
                 acresToPlant = keyboard.nextInt();            
                 CropControl.plantCrops(acresToPlant, cropData);
-                if (acresToPlant == 0) {
+                if (acresToPlant <= 0) {
                     throw new CropException("Please select more acres");
                 }
             }
