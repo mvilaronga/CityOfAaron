@@ -77,15 +77,20 @@ public class CropView {
         CropControl.sellLand(price, toSell, cropData);
     }
     
-    public static void feedPeopleView() throws CropException{
+    public static void feedPeopleView() {
         
-      
+        
         int wheat = cropData.getWheatInStore();
-        System.out.format("There are %d bushels of wheat in store.%n", wheat); 
-        System.out.print("How much wheat would you like to give to the people?");
-        int wheatForPeople = keyboard.nextInt(); 
-        CropControl.feedPeople(wheatForPeople, cropData); 
-        
+        System.out.format("There are %d bushels of wheat in store.%n", wheat);
+         int peopleFed;
+    boolean paramsNotOkay;
+     do
+    {
+       paramsNotOkay = false;
+       System.out.print("How much wheat would you like to give to the people?");
+       peopleFed = keyboard.nextInt();
+       CropControl.feedPeople(wheat, cropData);
+       } while(paramsNotOkay);
     }
     
     public static void plantCropsView() throws CropException {
