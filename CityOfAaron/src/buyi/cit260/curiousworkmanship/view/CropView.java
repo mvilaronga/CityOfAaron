@@ -21,6 +21,7 @@ public class CropView {
     private static Scanner keyboard = new Scanner(System.in);
     private static Game theGame = CityOfAaron.getTheGame();
     private static CropData cropData = theGame.getCropData();
+    private static int wheatForPeople;
     
    
     public static void runCropsView() throws CropException {
@@ -28,7 +29,7 @@ public class CropView {
         plantCropsView();
         buyLandView();
         sellLandView();
-        feedPeopleView();
+        
         
 
         
@@ -77,21 +78,54 @@ public class CropView {
         CropControl.sellLand(price, toSell, cropData);
     }
     
-    public static void feedPeopleView() {
+    
+        public static void feedPeopleView() {
+        
         
         
         int wheat = cropData.getWheatInStore();
         System.out.format("There are %d bushels of wheat in store.%n", wheat);
-         int peopleFed;
-    boolean paramsNotOkay;
-     do
-    {
-       paramsNotOkay = false;
-       System.out.print("How much wheat would you like to give to the people?");
-       peopleFed = keyboard.nextInt();
-       CropControl.feedPeople(wheat, cropData);
+        
+        
+        int peopleFed;
+        
+        
+        boolean paramsNotOkay;
+        do
+            
+            
+        {
+            
+            paramsNotOkay = false;
+            
+            
+            System.out.print("How much wheat would you like to give to the people?");
+            peopleFed = keyboard.nextInt();
+            
+            
+            try
+            {
+                CropControl.feedPeople(peopleFed, cropData);  
+                
+                 if (wheatForPeople < 0) {
+            throw new CropException("You cannot allocate more wheat than you own.");
+        }     
+                
+            }
+           
+            catch (CropException e) {
+            
+                
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println(e.getMessage());
+                
+                paramsNotOkay = true;
+            }
+ 
        } while(paramsNotOkay);
+        CropControl.feedPeople(wheat, cropData);
     }
+
     
     public static void plantCropsView() throws CropException {
         
