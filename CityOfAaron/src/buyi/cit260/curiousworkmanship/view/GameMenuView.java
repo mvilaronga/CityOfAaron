@@ -30,8 +30,9 @@ public class GameMenuView extends MenuView {
                     " 2 - View/Print a list\n" +
                     " 3 - Move to a new location\n" +
                     " 4 - Manage the Crops\n" +
-                    " 5 - Return to the Main menu\n",
-                5);
+                    " 5 - Save the Game\n" +
+                    " 6 - Return to the Main menu\n",
+                6);
 } 
  
    
@@ -58,7 +59,10 @@ public class GameMenuView extends MenuView {
                    }
                }
                 break;
-            case 5:
+            case 5: // manage crops
+                saveGame();
+                break;
+            case 6:
                 displayMenuView();
         }
     }
@@ -77,6 +81,7 @@ public class GameMenuView extends MenuView {
     } 
 }
     public void moveToNewLocation(){System.out.println("\n Move to new location selected");}
+        public void saveGame(){System.out.println("\n Saving game");}
     public void manageCrops() throws CropException{
         CropView.runCropsView();}
 
