@@ -79,10 +79,14 @@ public class CropView {
     }
     
     
-        public static void feedPeopleView() {
+       // The feedPeopleView method
+       // Purpose: To find out how much wheat the user wants to feed the people
+       // Parameters: none
+       // Returns: none
+       public static void feedPeopleView() {
         
         
-        
+       
         int wheat = cropData.getWheatInStore();
         System.out.format("There are %d bushels of wheat in store.%n", wheat);
         
@@ -92,8 +96,6 @@ public class CropView {
         
         boolean paramsNotOkay;
         do
-            
-            
         {
             
             paramsNotOkay = false;
@@ -105,17 +107,12 @@ public class CropView {
             
             try
             {
-                CropControl.feedPeople(peopleFed, cropData);  
-                
-                 if (wheatForPeople < 0) {
-            throw new CropException("You cannot allocate more wheat than you own.");
-        }     
-                
+                CropControl.feedPeople(peopleFed, cropData);              
             }
-           
-            catch (CropException e) {
             
-                
+            catch(CropException e)
+            {
+               
                 System.out.println("I am sorry master, I cannot do this.");
                 System.out.println(e.getMessage());
                 
@@ -123,8 +120,8 @@ public class CropView {
             }
  
        } while(paramsNotOkay);
-        CropControl.feedPeople(wheat, cropData);
     }
+
 
     
     public static void plantCropsView() throws CropException {
