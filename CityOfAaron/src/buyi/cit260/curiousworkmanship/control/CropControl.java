@@ -127,26 +127,23 @@ public class CropControl {
         return cropData.getAcresOwned(); 
     }
     
-    public static int feedPeople(int wheatForPeople, CropData cropData){
+ 
+    public static void feedPeople(int wheatForPeople, CropData cropData) throws CropException {
         
         int wheatInStore = cropData.getWheatInStore(); 
         
         if (wheatForPeople < 0) {
-            return -1;
-        }
-        
-        if (wheatForPeople < wheatInStore) {
-            wheatInStore -= wheatForPeople; 
-            cropData.setWheatInStore(wheatInStore);
-            cropData.setWheatForPeople(wheatForPeople);
-            return cropData.getWheatInStore();
+            throw new CropException("Input cannot be a negative number.");
         }
         
         if (wheatInStore < wheatForPeople) {
-            return -1;
-        }
+            throw new CropException("You cannot allocate more wheat than you own.");
+        }     
         
-        return 0;
+        wheatInStore -= wheatForPeople; 
+        cropData.setWheatInStore(wheatInStore);
+        cropData.setWheatForPeople(wheatForPeople);
+
     }
     
         public static int plantCrops(int acresToPlant, CropData cropData) throws CropException
