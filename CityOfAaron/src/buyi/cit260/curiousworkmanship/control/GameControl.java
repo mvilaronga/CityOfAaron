@@ -9,6 +9,8 @@ package buyi.cit260.curiousworkmanship.control;
 import java.util.ArrayList;
 import cityofaaron.CityOfAaron;
 import byui.cit260.curiousWorkmanship.model.*;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 /**
  *
@@ -168,5 +170,37 @@ public class GameControl {
  
         theGame.setMap(theMap);
         }
-    
+
+     public static void getSavedGame(String filePath) {
+            Game theGame = null;
+            
+            try (FileInputStream fips = new FileInputStream(filePath)) {
+                ObjectInputStream input = new ObjectInputStream(fips);
+                theGame = (Game) input.readObject();
+                CityOfAaron.setTheGame(theGame);
+            }
+            catch (Exception e) {
+                System.out.println("\nThere was an error reading the saved game file");
+            }
+        }
+
+    public void displayMap() {
+            Game _game = CityOfAaron.getTheGame();
+            Map theMap = _game.getTheMap(); 
+         
+            for (int i = 0; i < MAX_ROW; ++i) {
+                for (int j = 0; j < MAX_COL; ++j) {
+                   
+                    
+                    if (theMap.getLocation(i, j) == null) {
+                        System.out.print("...");
+                    }
+                    else {
+                        System.out.print(theMap.getLocation(i, j).getSymbol());
+                    } 
+                }
+                System.out.println("");
+            }
+    }
 }
+

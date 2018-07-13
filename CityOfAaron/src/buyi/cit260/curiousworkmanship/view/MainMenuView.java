@@ -1,4 +1,5 @@
 
+
 package buyi.cit260.curiousworkmanship.view;
 
 
@@ -9,6 +10,11 @@ import cityofaaron.CityOfAaron;
 import byui.cit260.curiousWorkmanship.model.Player;
 import buyi.cit260.curiousworkmanship.control.GameControl;
 import byui.cit260.curiousWorkmanship.model.CropData;
+
+/**
+ *
+ * @author Marcus Vilaronga and Nefi Nuñez
+ */
 
 
 public class MainMenuView extends MenuView
@@ -72,7 +78,8 @@ public class MainMenuView extends MenuView
         
         // The doAction method
         // Purpose: performs the selected action
-        // Parameters: none
+        // Parameters: none2
+    
         // Returns: none
         // ===================================
         @Override public void doAction(int option)
@@ -99,25 +106,29 @@ public class MainMenuView extends MenuView
 
         
         // The startSavedGame method
-        // Purpose: creates game object and starts the game
+        // Purpose: loads a saved game object from disk and start the game
         // Parameters: none
         // Returns: none
-        // ===================================     
-        public void startSavedGame()
-        {
-            System.out.println("\nStart save game option selected.");
-        }
+        // =================================== 
+        public void startSavedGame() {
+        System.out.println("Start Saved Game option Selected");
         
-        // The displayHelpMenuView method
-        // Purpose: creates game object and starts the game
-        // Parameters: none
-        // Returns: none
-        // ===================================     
-        public void displayHelpMenuView()
-        {
-            System.out.println("\nDisplay help menu option selected.");
-        }
+        Scanner input = new Scanner(System.in);    
 
+        // get rid of nl character left in the stream
+        input.nextLine();
+        // prompt user to get a file path
+        System.out.println("File path of the game wanted: ");
+        String fileName;
+        fileName = input.nextLine();
+        // call the getSavedGame( ) method in the GameControl class to load the game
+        GameControl gc = new GameControl();
+        GameControl.getSavedGame(fileName);
+
+        // display the game menu for the loaded game
+        GameMenuView gm = new GameMenuView();
+        gm.displayMenu();
+    }
         // The displaySaveGameView method
         // Purpose: creates game object and starts the game
         // Parameters: none
@@ -169,7 +180,11 @@ public class MainMenuView extends MenuView
 
         }    
 
-
+    public void displayHelpMenuView() {
+        System.out.println("Display Help Menu View option Selected");
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
+        
+    }
     
     }
-
