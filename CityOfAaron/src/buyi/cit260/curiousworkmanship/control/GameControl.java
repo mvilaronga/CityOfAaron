@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import cityofaaron.CityOfAaron;
 import byui.cit260.curiousWorkmanship.model.*;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  *
@@ -94,11 +98,67 @@ public class GameControl {
         theGame.setProvisions(provision);
         }
         
-        // create the Locations and the Map object 
-            // The createMap method
-        // Purpose: creates the location objects and the map
-        // Parameters: none
-        // Returns: none
+       public static void showProvisionsList() {
+            System.out.println("Provisions"); 
+            ArrayList<ListItem> provisions = theGame.getProvisions();
+            for(ListItem item : provisions) {
+                System.out.println(item.getName() + ": " + item.getNumber()); 
+            }
+        }
+        
+        // display Provisions List
+         public void displayProvisions() {
+            ArrayList<ListItem> provisionsList = theGame.getProvisions();
+            System.out.println("Provisions"); 
+            
+            for(ListItem item : provisionsList) {
+                System.out.println(item.getName() + ": " + item.getNumber()); 
+            }
+        }
+        
+        //method to save the animals list to disk 
+        public static void saveAnimalList() {
+            Scanner keyboard = new Scanner(System.in);
+            //receive a string of the file name, passed into the printing routine.
+            String listPath;
+            System.out.println("Please enter a file path for the animals list: ");
+            listPath = keyboard.next();
+            
+            FileWriter outFile = null; 
+            //declare a reference to a PrintWriter object
+            try (PrintWriter out = new PrintWriter(listPath);) {
+                //create the PrintWriter object
+                
+                //get a reference to the ArrayList
+                ArrayList<ListItem> animals = theGame.getAnimals();
+                
+                //output a heading for the report
+                out.println("\n\n Animals List      "); 
+                //use a for loop to get the data from the ArrayList
+                for (ListItem item : animals) {
+                out.printf("%n%-20s%7d", item.getName()
+                                             , item.getNumber());
+            
+                }
+                
+                
+            }
+            catch(Exception e) {
+                //output error message
+                System.out.println("Error saving list to file.");
+            }
+            finally {
+                if(outFile != null) {
+                    try {
+                        outFile.close(); 
+                    } catch (Exception e) {
+                        System.out.println("Error closing the file"); 
+                    }
+                }
+                
+            }
+        } 
+        
         public static void createMap() {
            // create the Map object, it is 5 x 5
         // refer to the Map constructor
@@ -184,6 +244,18 @@ public class GameControl {
             }
         }
 
+     public static void saveGame(Game theGame, String filePath) {
+                       
+            try (FileOutputStream fops = new FileOutputStream(filePath)) {
+                ObjectOutputStream output = new ObjectOutputStream(fops); 
+                output.writeObject(theGame);
+                CityOfAaron.setTheGame(theGame);
+                output.close();
+            }
+            catch(Exception e) {
+                System.out.println("There was an error saving the game.");
+            }
+        }
     public void displayMap() {
             Game _game = CityOfAaron.getTheGame();
             Map theMap = _game.getTheMap(); 
@@ -201,6 +273,16 @@ public class GameControl {
                 }
                 System.out.println("");
             }
+    }
+
+    private static class FileWriter {
+
+        public FileWriter() {
+        }
+
+        private void close() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 }
 
