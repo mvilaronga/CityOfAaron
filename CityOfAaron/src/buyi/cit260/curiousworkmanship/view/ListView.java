@@ -5,6 +5,7 @@
  */
 package buyi.cit260.curiousworkmanship.view;
 
+import buyi.cit260.curiousworkmanship.control.GameControl;
 import java.util.Scanner;
 
 /**
@@ -75,4 +76,14 @@ public class ListView extends MenuView {
 
     }
        
+public void viewProvisions() {
+        System.out.println("Show Provisions Selected");
+        GameControl.showProvisionsList(); 
+    }
+    
+    public void saveAnimals() {
+        System.out.println("Save Animal List Selected");
+        GameControl.saveAnimalList(); 
+        
+    }
 }
