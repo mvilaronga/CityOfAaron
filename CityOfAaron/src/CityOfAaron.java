@@ -10,6 +10,12 @@ import buyi.cit260.curiousworkmanship.view.MainMenuView;
 import byui.cit260.curiousWorkmanship.model.Location;
 import byui.cit260.curiousWorkmanship.model.Player;
 import byui.cit260.curiousWorkmanship.model.Game;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -19,7 +25,8 @@ public class CityOfAaron {
 
     // variable for keeping a reference to the Game object
     private static Game theGame = null;
-
+    
+    
     public static Game getTheGame() {
         return theGame;
     }
