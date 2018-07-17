@@ -25,7 +25,55 @@ public class CityOfAaron {
 
     // variable for keeping a reference to the Game object
     private static Game theGame = null;
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        CityOfAaron.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        CityOfAaron.inFile = inFile;
+    }
     
+    public static void main(String[] args) {
+        
+        try {
+        CityOfAaron.inFile = new BufferedReader(new InputStreamReader(System.in));
+        
+        CityOfAaron.outFile = new PrintWriter(System.out, true);
+    }
+        catch(Throwable e) {
+            // output error message
+            System.out.println("Exception: " + e.toString() +
+                               "\nCause:   " + e.getCause() +
+                               "\nMessage: ") + e.getMessage());
+            e.printStackTrace();;
+        }
+        finally
+        {
+            try {
+                if (CityOfAaron.inFile != null)
+                CityOfAaron.inFile.close();
+                
+                if (CityOfAaron.outFile != null)
+                CityOfAaron.outFile.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CityOfAaron.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            // if(output != null) close the file
+         }
+
+    }
     
     public static Game getTheGame() {
         return theGame;
