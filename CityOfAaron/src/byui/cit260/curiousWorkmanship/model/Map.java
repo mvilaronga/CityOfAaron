@@ -5,55 +5,129 @@
  */
 package byui.cit260.curiousWorkmanship.model;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
- * @author MARCUS VILARONGA
+ * @author Marcus Vilaronga and Nefi Nuñez
  */
-public class Map {
-     private int rowCount;               // stores the number of rows 
-     private int colCount;                // stores the number of columns
-     private Location[] [] locations;       // a reference to a 2-dimensional array
-                                                           // of Location objects
-     
-     // parameterized Map constructor
-    // Purpose: Sets row and column values
-    //    and creates an array of Location objects
-    // Parameters: row count and column count
-    // Returns: none
-    public Map(int _rows, int _cols)
-    {
-         rowCount = _rows;
-         colCount = _cols;
+
+public class Map implements Serializable {
+// variables
+    private int rowCount;
+    private int colCount;
+    private Location[][] locations; 
+    //private ArrayList<Location> locations = new ArrayList<Location>();
+    // constructors
+    /**
+    * default constructor
+    * Purpose: Set data members to default values
+    * Parameters: none
+    * Returns: none
+    */
+    
+    public Map() {
+    }
+    
+    /**
+     * parameterized Map constructor
+     * Purpose: sets row and column values
+     *   and creates an array of Location objects
+     * @param _rows
+     * @param _cols 
+     * Returns: none
+     */
+    public Map(int _rows, int _cols) {
+        this.rowCount = _rows;
+        this.colCount = _cols;
         
         // create the array of location objects
-        locations = new Location[_rows][_cols];  
+        this.locations = new Location[_rows][_cols]; 
     }
+    
+    
+        
+    // getters & setters
 
     public int getRowCount() {
         return rowCount;
     }
 
+    public void setRowCount(int rowCount) {
+        this.rowCount = rowCount;
+    }
+
     public int getColCount() {
         return colCount;
     }
+
+    public void setColCount(int colCount) {
+        this.colCount = colCount;
+    }
+    /**
+     * The getLocation method
+     * Purpose: returns the location object at the given
+     *   row and column 
+     * Parameters: a row and a column
+     * Returns: a Location object
+     * @param row
+     * @param col
+     * @return 
+     */
+    public Location getLocation(int row, int col) {
+        return this.locations[row][col];
+    }
+
+    /**
+     * The setLocation method
+     * Purpose: stores a location object at the row and column
+     * Parameters: a row and column, and a reference to a location object
+     * Returns: void
+     */
     
-    // The getLocation method
-    // Purpose: returns the location object at the given row and column
-    // Parameters: a row and column
-    // Returns: a Location object
-    public Location getLocation(int row, int col)
-    {
-         return locations[row][col];
+    public void setLocation(int row, int col, Location _location) {
+        this.locations[row][col] = _location;
     }
     
-    // The setLocation method
-    // Purpose: stores a location object at the  row and column
-    // Parameters: a row and column, and a reference to a location object
-    // Returns: void
-    public void setLocation(int row, int col, Location _location)
-    {
-        locations[row][col] = _location;
-    } 
+    // equals, hashCode, toString
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.rowCount;
+        hash = 79 * hash + this.colCount;
+        hash = 79 * hash + Objects.hashCode(this.locations);
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Map other = (Map) obj;
+        if (this.rowCount != other.rowCount) {
+            return false;
+        }
+        if (this.colCount != other.colCount) {
+            return false;
+        }
+        if (!Objects.equals(this.locations, other.locations)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Map{" + "rowCount=" + rowCount + ", colCount=" + colCount + ", locations=" + locations + '}';
+    }
+    
 }
