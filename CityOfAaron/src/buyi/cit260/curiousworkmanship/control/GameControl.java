@@ -159,76 +159,81 @@ public class GameControl {
             }
         } 
         
-        public static void createMap() {
-           // create the Map object, it is 5 x 5
-        // refer to the Map constructor
-        Map theMap = new Map(MAX_ROW, MAX_COL);
-
-        // create a string that will go in the Location objects
-        // that contain the river
-        String valley = "\nYou are on the Valley. The valley is the source" +
-                      "\nof life for our city. The valley marks the northen " +
-                      "\nboundary of the city - it is wilderness to the West.";
-
-        // create a new Location object
-        Location loc = new Location();
-
-        // use setters in the Location class to set the description and symbol
-        loc.setDescription(valley);
-        loc.setSymbol("***");  
-
-        // set this location object in each cell of the array in column 2      
-        for(int i = 0; i < MAX_ROW; i++)
-        {
-                theMap.setLocation(i, 2, loc);
-        }
-
+        public static Map createMap() {
+            //create the Map object
+            //refer to the Map constructor
+            Map theMap = new Map(MAX_ROW, MAX_COL); 
+            
+            //create a string that will go in the Location objects
+            //that contain the river
+            String valley = "You are on the vally. The valley is the source\n" +
+                           "of life for our city. The valley marks the eastern\n" +
+                           "boundary of the city - it is wilderness to the west.\n";
+            
+            Location loc = new Location(); 
+            
+            //use setters in the Location class to set the description and symbol
+            loc.setDescription(valley);
+            loc.setSymbol("~~~");
+            
+            //set this location object in each cell of the array in column 4
+            for(int i = 0; i < MAX_ROW; i++) {
+                theMap.setLocation(i, 4, loc); 
+            }
+    
+            // FARMLAND
+            
+            //define the string for a farm land location
+            String farmland = "You are on the fertile banks of the valley.\n" +
+                              "In the spring, this low farmland floods and is covered with rich\n" +
+                              "new soil. Wheat is planted as far as you can see.";
+            
+            //set a farmland location with a hint
+            Location loc2 = new Location();
+            loc2.setDescription(farmland + "\nOne bushel will plant two acres of wheat.");
+            loc2.setSymbol("///");
+            theMap.setLocation(0, 2, loc2);
+            
+            // MOUNTAIN
+       
+            //define the string for a mountain range
+            String mountain = "You are in a mountain range. \n"; 
+            // define new Location
+            Location loc3 = new Location();
+            loc3.setDescription(mountain);
+            loc3.setSymbol("^^^");
+            
+            // for loop sets 3rd row of map as mountain
+            for (int i = 0; i < 4; i++) {
+            theMap.setLocation(1, i, loc3);
+            }
+            
+            // PLAINS 
+            //define the string for the plains
+            String plains = "You are in the plains. \n"; 
+            // define the plains location
+            Location loc4 = new Location();
+            loc4.setDescription(plains);
+            loc4.setSymbol("'''");
+            
+            // for loop sets 
+            for (int i = 2; i < 5; i++) {
+                for (int j = 0; j < 3; j++) {
+                    theMap.setLocation(i, j, loc4);                    
+                }
+            }
+          
+            // TRADING POST
+            
+            //define the string for a trading post
+            String tradingPost = "Welcome to the trading post. \n";
+            Location loc5 = new Location();
+            loc5.setDescription(tradingPost);
+            loc5.setSymbol("$$$"); 
+            theMap.setLocation(4, 4, loc5);
         
-        // define the string for a farm land location
-        String farmland = "\nYou are on the fertile banks of the valley." +
-        "\nIn the springthis low farmland floods and is covered with rich" +
-        "\nnew soil. Wheat is planted as far as you can see."; 
-
-        // set a farmland location with a hint
-        loc = new Location();
-        loc.setDescription(farmland + "\nOne bushel will plant two acres of wheat.");
-        loc.setSymbol("***");
-        theMap.setLocation(0, 2, loc);
-        
-        // define the string for a fountain location
-        String fountain = "\nIn the fountain cattle have abundant water." +
-        "\nToo fountain provide water to plantations and to cook, whash dishies" +
-        "\nand take a shower."; 
-
-        // set a fountain location with a hint
-        loc = new Location();
-        loc.setDescription(fountain + "\nOne barrel of water quench thirst two sheeps.");
-        loc.setSymbol("***");
-        theMap.setLocation(1, 3, loc);
-        
-        // define the string for a pasture location
-        String pasture = "\nIn the pasture cattle have grain to eat." +
-        "\nIt's a silent place to cattle."; 
-
-        // set a pasture location with a hint
-        loc = new Location();
-        loc.setDescription(pasture + "\nOne acre of pasture provide food to 05 sheeps.");
-        loc.setSymbol("***");
-        theMap.setLocation(3, 4, loc);
-        
-        // define the string for a forest location
-        String forest = "\nWe have a forest that is so far and is in the" +
-        "\nboundary of the valley. The forest is big and dense, but have wolfs." +
-        "\nWolfs are a threat to our cattle.";; 
-
-        // set a forest location with a hint
-        loc = new Location();
-        loc.setDescription(forest + "\nThe forest have a lot of wolfs.");
-        loc.setSymbol("***");
-        theMap.setLocation(4, 2, loc);
-
- 
-        theGame.setMap(theMap);
+            // return 
+            return theMap;
         }
 
      public static void getSavedGame(String filePath) {
